@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
 
-var max_speed = 150
-var speed = 0
-var accel = 200
+
+var _hero_max_speed = 150
+var _hero_speed = 0
+var _hero_accel = 200
+
 var move_direction
 var moving = false
 var destination = Vector2()
@@ -20,12 +22,13 @@ func _unhandled_input(event):
 
 func _movement_loop(delta):
 	if moving == false:
-		speed = 0
+
+		_hero_speed = 0
 	else:
-		speed += accel * delta
-		if speed > max_speed:
-			speed = max_speed
-	movement = position.direction_to(destination) * speed
+		_hero_speed += _hero_accel * delta
+		if _hero_speed > _hero_max_speed:
+			_hero_speed = _hero_max_speed
+	movement = position.direction_to(destination) * _hero_speed
 	move_direction = rad2deg(destination.angle_to_point(position))
 	if position.distance_to(destination) > 5:
 		movement = move_and_slide(movement)

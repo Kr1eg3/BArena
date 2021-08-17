@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://heroes/gitgud.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[node name="Main Arena" type="Node"]
+
+[node name="icon" type="Sprite" parent="."]
+position = Vector2( 511.079, 304.582 )
+scale = Vector2( 16.0667, 9.49543 )
+texture = ExtResource( 3 )
+
+[node name="gitgud" parent="." instance=ExtResource( 2 )]
+position = Vector2( 40, 176 )
