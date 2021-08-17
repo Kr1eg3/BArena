@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Infernus_Tiles/Infernus_Tiles/Infernus_GorePile_2.png" type="Texture" id=1]
+[ext_resource path="res://assets/Infernus_Tiles/Infernus_Tiles/Infernus_Grave1_4.png" type="Texture" id=2]
+[ext_resource path="res://assets/Infernus_Tiles/Infernus_Tiles/Infernus_DragonBones1_3.png" type="Texture" id=3]
+[ext_resource path="res://assets/Infernus_Tiles/Infernus_Tiles/Infernus_Grave1_5.png" type="Texture" id=4]
+
+[node name="KinematicBody2D2" type="KinematicBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Infernus_GorePile_2" type="Sprite" parent="Sprite"]
+position = Vector2( 87.3806, 127.89 )
+scale = Vector2( 3.35113, 2.62635 )
+texture = ExtResource( 1 )
+
+[node name="Infernus_DragonBones1_3" type="Sprite" parent="Sprite"]
+position = Vector2( 116.861, 50.976 )
+rotation = 0.785397
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PoolVector2Array( -106.169, -143.384, 31.0488, -22.1606, 79.184, -1.64276, 140.776, 2.76651, 189.913, 11.586, 223.93, 35.5244, 257.948, 53.1634, 284.407, 60.7229, 312.266, 74.6386, 291.077, 14.2492, 533.694, -136.195, 528.396, -44.0213, 373.715, 186.942, 341.931, 211.309, 322.204, 230.812, 261.728, 243.411, 239.049, 228.292, 216.914, 250.509, 206.32, 327.85, 218.891, 414.761, 173.534, 412.241, 45.0216, 416.021, -210.742, 274.909, -263.659, 176.636, -92.3098, 193.015, -110.321, 133.654, -123.814, 84.4441, -80.1607, 46.3465, -24.6016, 36.8221, -140.187, -111.886, -155.306, -166.063 )
+
+[node name="Infernus_Grave1_4" type="Sprite" parent="."]
+position = Vector2( -85.1535, 78.3928 )
+rotation = 0.261799
+texture = ExtResource( 2 )
+
+[node name="Infernus_Grave1_5" type="Sprite" parent="."]
+position = Vector2( -37.0703, 181.631 )
+rotation = 0.261799
+texture = ExtResource( 2 )
+
+[node name="Infernus_Grave1_6" type="Sprite" parent="."]
+position = Vector2( 220.317, 64.2507 )
+texture = ExtResource( 4 )
+
+[node name="Infernus_Grave1_7" type="Sprite" parent="."]
+position = Vector2( 187.79, -29.0873 )
+texture = ExtResource( 4 )
