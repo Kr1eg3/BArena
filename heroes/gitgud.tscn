@@ -1,9 +1,10 @@
-[gd_scene load_steps=102 format=2]
+[gd_scene load_steps=103 format=2]
 
 [ext_resource path="res://heroes/gitgud_assets/goblin.png" type="Texture" id=1]
 [ext_resource path="res://heroes/gitgud_assets/script/gitgud.gd" type="Script" id=2]
 [ext_resource path="res://heroes/gitgud_assets/new_theme.tres" type="Theme" id=3]
-[ext_resource path="res://heroes/camera2D.gd" type="Script" id=4]
+[ext_resource path="res://features/scripts/zooming_camera2D.gd" type="Script" id=4]
+[ext_resource path="res://features/zooming_camera2D.tscn" type="PackedScene" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -481,17 +482,15 @@ position = Vector2( 11.2251, -11.0931 )
 scale = Vector2( 4.15491, 3.56353 )
 frames = SubResource( 97 )
 animation = "jump_w"
-frame = 6
+frame = 4
 playing = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 12.7776, 53.855 )
-current = true
-script = ExtResource( 4 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 16.3212, -1.77002 )
 polygon = PoolVector2Array( -41.5136, 89.9357, -41.5136, 117.287, -5.54005, 127.396, 29.5415, 118.179, 29.5415, 88.7465, -5.24275, 81.314 )
+
+[node name="ZoomingCamera2D" parent="." instance=ExtResource( 5 )]
+script = ExtResource( 4 )
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 margin_left = -64.0
