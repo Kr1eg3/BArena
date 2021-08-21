@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/Library/longTableDecoratedChairsBooks_W.png" type="Texture" id=1]
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -140 )
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -71.2852, 50.9722, -7.79755, 90.4943, 69.2022, 53.0714, 69.2022, 4.5644, 4.8159, -9.99278, -58.1538, 5.29842, -71.594, 20.3134 )
