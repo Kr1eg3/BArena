@@ -1,14 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Map_disign.tscn" type="PackedScene" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=3]
 
 [node name="Main Arena" type="Node"]
-
-[node name="icon" type="Sprite" parent="."]
-visible = false
-position = Vector2( 511.079, 304.582 )
-scale = Vector2( 16.0667, 9.49543 )
-texture = ExtResource( 3 )
 
 [node name="Limon" parent="." instance=ExtResource( 1 )]

@@ -5,7 +5,9 @@
 [node name="KinematicBody2D" type="KinematicBody2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -180 )
 texture = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -80.7882, 158.511, 28.6686, 220.581, 74.7206, 199.891, -39.4082, 136.486 )
+position = Vector2( -0.846149, -176.148 )
+polygon = PoolVector2Array( -80.7882, 158.511, 28.6686, 220.581, 80.4606, 191.348, 81.1678, 176.852, -20.6556, 129.829 )

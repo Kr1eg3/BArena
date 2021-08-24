@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/tavern_2_vol.mp3-50cbbfa26e5c258945207eedfebdce5c.mp3str"
+
+[deps]
+
+source_file="res://assets/Music/tavern_2_vol.mp3"
+dest_files=[ "res://.import/tavern_2_vol.mp3-50cbbfa26e5c258945207eedfebdce5c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

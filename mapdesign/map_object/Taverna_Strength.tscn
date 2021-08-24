@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/MedievalCity/barracks.png" type="Texture" id=1]
+
+[node name="Taverna_strenght" type="KinematicBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -80 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, 0.8909 )
+scale = Vector2( 1.5, 1.5 )
+polygon = PoolVector2Array( -124.547, 3.13827, 9.08818, 70.2526, 154.008, -2.20711, 8.47336, -62.2318 )
