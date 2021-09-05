@@ -2,7 +2,7 @@
 
 Клон жизни на арене в готической тематике. 
 
-![ghotic-gif](https://cdna.artstation.com/p/assets/images/images/006/529/200/original/dennis-varvaro-cinematicshot4.gif)
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
 
 
 
