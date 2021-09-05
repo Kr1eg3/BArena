@@ -1,7 +1,11 @@
 extends KinematicBody2D
 
+# Changeable Characteristics
+var _hero_current_health = 500
+var _hero_armor = 40
+var _hero_atack_dmg = 30
 
-
+# Unchangeable Characteristics
 var _hero_max_speed = 150
 var _hero_speed = 0
 var _hero_accel = 200
