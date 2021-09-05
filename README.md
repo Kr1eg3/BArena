@@ -35,5 +35,5 @@
 
 
 ## Dev's
-![Str1fe](https://vk.com/id146987320)
-![HoytValker](https://vk.com/dtorkhov)
+* ![Str1fe](https://vk.com/id146987320)
+* ![HoytValker](https://vk.com/dtorkhov)
