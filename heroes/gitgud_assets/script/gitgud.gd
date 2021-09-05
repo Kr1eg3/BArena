@@ -11,6 +11,14 @@ var moving = false
 var destination = Vector2()
 var movement = Vector2()
 
+#spells 
+ 
+var spell = preload("res://Spells/Ice_Spear.tscn")
+var can_fire = true
+var rate_of_fire = 0.4
+var shooting = true
+
+#end spells
 
 onready var _animated_sprite = $AnimatedSprite
 
@@ -68,5 +76,22 @@ func _physics_process(delta):
 
 func _process(delta):
 	_animation_loop()
+	_skill_loop()
+	
+	
+func _skill_loop():
+	if Input.is_action_pressed("Shoot") and can_fire == true:
+		can_fire = false
+		shooting = true
+		_hero_speed = 0
+		get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
+		var spell_instance = spell.instance()
+		spell_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
+		spell_instance.rotation = get_angle_to(get_global_mouse_position())
+		get_parent().add_child(spell_instance)
+		yield(get_tree().create_timer(rate_of_fire), "timeout")
+		can_fire = true
+		shooting = false
+		_hero_speed = 150
 
 

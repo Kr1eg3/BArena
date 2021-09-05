@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/skeleton_knight.png" type="Texture" id=1]
+[ext_resource path="res://Scene/Sceleton.gd" type="Script" id=2]
+
+[node name="Sceleton" type="KinematicBody2D" groups=[
+"Enemies",
+]]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 4.98433, -94.5284 )
+scale = Vector2( 2.01495, 2.23604 )
+texture = ExtResource( 1 )
+hframes = 30
+vframes = 10
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 4.01637, -3.78486 )
+scale = Vector2( 1.98877, 2.51532 )
+polygon = PoolVector2Array( -13.6079, -0.418884, -8.83497, 7.88963, 11.4944, 7.71284, 15.0299, 0.11145, 9.5498, -9.43449, -7.59753, -8.90416 )
