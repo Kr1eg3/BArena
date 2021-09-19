@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Dungeon/dirt_N.png" type="Texture" id=1]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( -153.729, 181.34, -0.0992737, 102.431, 157.091, 179.677, -0.478806, 261.435 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( -0.478806, 261.435, 157.091, 179.677, -0.0992737, 102.431, -153.729, 181.34 ) ]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 0, -180 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Sprite"]
+navpoly = SubResource( 1 )

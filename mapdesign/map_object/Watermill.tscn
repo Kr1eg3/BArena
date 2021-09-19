@@ -18,17 +18,30 @@ animations = [ {
 [node name="Watermill" type="KinematicBody2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -41.5311, -80.5095 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 0, -220 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -6.60715, -0.943863 )
-polygon = PoolVector2Array( -181.822, 28.4387, -39.8315, 95.5672, 78.5348, 40.1299, 144.879, 79.0022, 256.015, 25.2431, 258.272, 5.29686, 43.5378, -74.9729, -182.893, 10.4439 )
+position = Vector2( 71.3818, -59.9321 )
+scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -184.891, 27.411, -160.891, 39.411, -148.891, 31.411, -169.19, 20.5178, 59.1091, -80.589, 183.109, -8.58898, 103.327, 33.8876, 83.1091, 23.411, -39.1409, 86.161, -121.391, 43.661, -130.641, 51.161, -52.1409, 90.161, -38.8909, 97.661, 83.1091, 39.411, 103.109, 51.411, 211.109, -4.58898, 63.1091, -96.589, -176.891, 7.41102, -182.893, 10.4439 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 164.399, 10.7601 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 392, -16 )
+scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2( -8, 8 )
+polygon = PoolVector2Array( 352, 88, 400.84, 82.3381, 536, 8, 544, -40, 488, -72, 272, 40 )
