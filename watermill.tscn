@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mapdesign/map_object/Wall North West.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mapdesign/map_object/Wall.tscn" type="PackedScene" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+
+func _pressed():
+	get_tree().change_scene(\"res://Main Arena.tscn\")
+
+"
+
+[node name="watermill" type="Node"]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="KinematicBody2D" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 417.388, -151 )
+
+[node name="KinematicBody2D2" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 546.471, -88.1421 )
+
+[node name="KinematicBody2D18" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 160, -101 )
+
+[node name="KinematicBody2D19" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 289, -165 )
+
+[node name="KinematicBody2D17" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 33, -37 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 2.0
+margin_top = 1.0
+margin_right = 96.0
+margin_bottom = 119.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

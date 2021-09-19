@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://heroes/gitgud.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+onready var nav : Navigation2D = $Navigation2D
+
+var path : PoolVector2Array
+var goal : Vector2
+export var speed := 250
+
+func _unhandled_input(event):
+	if event.is_action_pressed('right_click'):
+		#goal = event.position
+		goal = get_viewport_transform().affine_inverse().xform( event.position )
+		path = nav.get_simple_path($gitgud.position, goal)
+		$Line2D.points = PoolVector2Array(path)
+		$Line2D.show()
+		print(path)
+
+func _process(delta: float) -> void:
+	if !path:
+		$Line2D.hide()
+		return
+	if path.size() > 0:
+		var d: float = $gitgud.position.distance_to(path[0])
+		if d > 10:
+			$gitgud.position = $gitgud.position.linear_interpolate(path[0], (speed * delta)/d)
+		else:
+			path.remove(0)
+"
+
+[sub_resource type="NavigationPolygon" id=2]
+vertices = PoolVector2Array( 56, 48, 384, 192, -384, 192, -8, 48, 384, -192, 56, -16, 56, -80, -384, -192, -72, -80, -136, -80, -136, -16, -72, -16, -8, -16 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 1, 0, 5 ), PoolIntArray( 4, 5, 6 ), PoolIntArray( 7, 4, 6, 8 ), PoolIntArray( 7, 8, 9 ), PoolIntArray( 2, 7, 9, 10 ), PoolIntArray( 3, 2, 10, 11 ), PoolIntArray( 3, 11, 12 ) ]
+outlines = [ PoolVector2Array( -384, -192, -384, 192, 384, 192, 384, -192 ), PoolVector2Array( -136, -80, -136, -16, -72, -16, -8, -16, -8, 48, 56, 48, 56, -16, 56, -80, -72, -80 ) ]
+
+[node name="Node2D" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+position = Vector2( 440, 264 )
+navpoly = SubResource( 2 )
+
+[node name="Line2D" type="Line2D" parent="."]
+default_color = Color( 1, 0.4, 0.513726, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -88, 360 )
+texture = ExtResource( 2 )
+
+[node name="gitgud" parent="." instance=ExtResource( 1 )]
+position = Vector2( 216, 296 )
