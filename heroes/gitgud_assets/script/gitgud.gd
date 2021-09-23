@@ -23,7 +23,7 @@ var fire_direction
  
 var spell = preload("res://Spells/Ice_Spear.tscn")
 var can_fire = true
-var rate_of_fire = 2
+var rate_of_fire = 0.4
 
 
 #end spells

@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var projectile_speed = 600
-var life_time = 3
+var life_time = 2
 var damage = 90
 
 func _ready():
