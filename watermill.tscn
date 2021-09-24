@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://mapdesign/map_object/Wall North West.tscn" type="PackedScene" id=1]
+[ext_resource path="res://heroes/gitgud.tscn" type="PackedScene" id=2]
 [ext_resource path="res://mapdesign/map_object/Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mapdesign/map_object/Barrel W.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scene/Column.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mapdesign/Tiles/floor/inferno_floor.tres" type="TileSet" id=6]
+[ext_resource path="res://Exite.gd" type="Script" id=7]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Button
@@ -12,9 +17,22 @@ func _pressed():
 
 "
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 45.4067
+
 [node name="watermill" type="Node"]
 
+[node name="TileMap" type="TileMap" parent="."]
+mode = 1
+tile_set = ExtResource( 6 )
+format = 1
+tile_data = PoolIntArray( -786425, 2, 0, -786424, 2, 0, -720890, 2, 0, -720888, 2, 0, -720887, 2, 0, -720886, 2, 0, -655355, 2, 0, -655354, 2, 0, -655353, 2, 0, -655352, 2, 0, -655351, 2, 0, -655350, 2, 0, -589821, 2, 0, -589820, 2, 0, -589819, 2, 0, -589818, 2, 0, -589817, 2, 0, -589816, 2, 0, -589815, 2, 0, -589814, 2, 0, -524285, 2, 0, -524284, 2, 0, -524283, 2, 0, -524281, 2, 0, -524280, 2, 0, -524279, 2, 0, -524278, 2, 0, -458750, 2, 0, -458749, 2, 0, -458748, 2, 0, -458746, 2, 0, -458745, 2, 0, -458744, 2, 0, -458743, 2, 0, -458742, 2, 0, -393214, 2, 0, -393213, 2, 0, -393212, 2, 0, -393210, 2, 0, -393209, 2, 0, -393208, 2, 0, -393207, 2, 0, -393206, 2, 0, -327679, 2, 0, -327678, 2, 0, -327677, 2, 0, -327676, 2, 0, -327675, 2, 0, -327674, 2, 0, -327673, 2, 0, -327672, 2, 0, -327671, 2, 0, -262142, 2, 0, -262141, 2, 0, -262140, 2, 0, -262139, 2, 0, -262138, 2, 0, -262137, 2, 0, -262136, 2, 0, -262135, 2, 0, -196607, 2, 0, -196606, 2, 0, -196605, 2, 0, -196604, 2, 0, -196603, 2, 0, -196602, 2, 0, -196601, 2, 0, -196600, 2, 0, -131071, 2, 0, -131070, 2, 0, -131069, 2, 0, -131068, 2, 0, -131067, 2, 0, -131066, 2, 0, -131065, 2, 0, -131064, 2, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0, -65532, 2, 0, -65531, 2, 0, -65530, 2, 0, -65529, 2, 0, -65528, 2, 0 )
+
 [node name="YSort" type="YSort" parent="."]
+position = Vector2( 6.72717, -6.72717 )
+
+[node name="gitgud" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 176.588, 53.8174 )
 
 [node name="KinematicBody2D" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 417.388, -151 )
@@ -31,12 +49,30 @@ position = Vector2( 289, -165 )
 [node name="KinematicBody2D17" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 33, -37 )
 
+[node name="KinematicBody2D3" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 397.987, -15.1036 )
+
+[node name="KinematicBody2D4" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 463.912, 35.8388 )
+
+[node name="KinematicBody2D5" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 342.75, 103.547 )
+
 [node name="Button" type="Button" parent="."]
-margin_left = 2.0
-margin_top = 1.0
-margin_right = 96.0
-margin_bottom = 119.0
+margin_left = -157.2
+margin_top = -216.944
+margin_right = -63.1999
+margin_bottom = -98.9444
 script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 89.0955, 62.2254 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
