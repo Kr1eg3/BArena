@@ -1,5 +1,8 @@
 extends Node2D
 
+var heroe = preload("res://heroes/gitgud.tscn")
+var heroe_instance = heroe.instance()
+
 onready var nav : Navigation2D = $Navigation2D
 
 var path : PoolVector2Array
