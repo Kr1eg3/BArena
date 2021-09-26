@@ -3,8 +3,8 @@
 [ext_resource path="res://heroes/gitgud_assets/goblin.png" type="Texture" id=1]
 [ext_resource path="res://heroes/gitgud_assets/script/gitgud.gd" type="Script" id=2]
 [ext_resource path="res://heroes/gitgud_assets/new_theme.tres" type="Theme" id=3]
-[ext_resource path="res://features/scripts/zooming_camera2D.gd" type="Script" id=4]
-[ext_resource path="res://features/zooming_camera2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://heroes/features/scripts/zooming_camera2D.gd" type="Script" id=4]
+[ext_resource path="res://heroes/features/zooming_camera2D.tscn" type="PackedScene" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )

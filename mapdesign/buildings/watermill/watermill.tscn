@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/MedievalCity/Watermill/Wheel/sprite0.png" type="Texture" id=4]
 [ext_resource path="res://assets/MedievalCity/Watermill/Wheel/sprite1.png" type="Texture" id=5]
 [ext_resource path="res://assets/MedievalCity/Watermill/Wheel/sprite4.png" type="Texture" id=6]
-[ext_resource path="res://mapdesign/map_object/hiden_area.gd" type="Script" id=7]
+[ext_resource path="res://mapdesign/buildings/watermill/hiden_area.gd" type="Script" id=7]
 [ext_resource path="res://assets/Music/tavern_2_vol.mp3" type="AudioStream" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -19,6 +19,17 @@ animations = [ {
 
 [node name="Watermill" type="KinematicBody2D"]
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( 72, -48 )
+scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -184.891, 27.411, -168, 36, -156, 28, -169.19, 20.5178, 59.1091, -80.589, 183.109, -8.58898, 103.327, 33.8876, 83.1091, 23.411, -39.1409, 86.161, -121.391, 43.661, -130.641, 51.161, -52.1409, 90.161, -38.8909, 97.661, 83.1091, 39.411, 103.109, 51.411, 211.109, -4.58898, 63.1091, -96.589, -176.891, 7.41102, -182.893, 10.4439 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( -6.39999, 19.2001 )
+polygon = PoolVector2Array( 352, 88, 400.84, 82.3381, 536, 8, 544, -40, 488, -72, 272, 40 )
+
 [node name="hiden_area" type="Area2D" parent="."]
 position = Vector2( 0, -208 )
 collision_layer = 2
@@ -28,28 +39,20 @@ script = ExtResource( 7 )
 [node name="Sprite" type="Sprite" parent="hiden_area"]
 texture = ExtResource( 3 )
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="hiden_area"]
+position = Vector2( 401.6, 203.2 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 1 )
+frame = 3
+playing = true
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hiden_area"]
-position = Vector2( -0.617981, 213.728 )
-polygon = PoolVector2Array( -8, 104, 240, -16, 288, 16, 440, -72, 168, -224, 8, -144, -272, -16, -224, 0, -248, 16, -191.382, 42.272, -176, 24 )
+visible = false
+position = Vector2( 0, 216 )
+polygon = PoolVector2Array( -6.86359, 114.08, 238.544, -6.8888, 288, 16, 440, -72, 188.955, -221.332, 8, -144, -272, -16, -240.436, 0.740356, -253.149, 9.48093, -186.668, 45.2378, -169.717, 31.9945 )
 
 [node name="tavern" type="AudioStreamPlayer2D" parent="hiden_area"]
 stream = ExtResource( 10 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="hiden_area"]
-position = Vector2( 401.6, 211.2 )
-scale = Vector2( 0.8, 0.8 )
-frames = SubResource( 1 )
-frame = 2
-playing = true
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="hiden_area"]
-position = Vector2( -6.39999, 235.2 )
-polygon = PoolVector2Array( 352, 88, 400.84, 82.3381, 536, 8, 544, -40, 488, -72, 272, 40 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 72, -48 )
-scale = Vector2( 2, 2 )
-polygon = PoolVector2Array( -184.891, 27.411, -168, 36, -156, 28, -169.19, 20.5178, 59.1091, -80.589, 183.109, -8.58898, 103.327, 33.8876, 83.1091, 23.411, -39.1409, 86.161, -121.391, 43.661, -130.641, 51.161, -52.1409, 90.161, -38.8909, 97.661, 83.1091, 39.411, 103.109, 51.411, 211.109, -4.58898, 63.1091, -96.589, -176.891, 7.41102, -182.893, 10.4439 )
 
 [connection signal="body_entered" from="hiden_area" to="hiden_area" method="_on_hiden_area_body_entered"]
 [connection signal="body_exited" from="hiden_area" to="hiden_area" method="_on_hiden_area_body_exited"]
