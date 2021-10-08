@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wolfs.mp3-d54ce43b9018672508080f4583628e44.mp3str"
+
+[deps]
+
+source_file="res://assets/Music/wolfs.mp3"
+dest_files=[ "res://.import/wolfs.mp3-d54ce43b9018672508080f4583628e44.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

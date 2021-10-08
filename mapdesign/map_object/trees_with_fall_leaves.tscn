@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Tiles/trees/trees_64x32_cloudy.png" type="Texture" id=1]
+[ext_resource path="res://assets/Tiles/leaf.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = WORLD_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/speed = 1.0
+shader_param/minStrength = 0.34
+shader_param/maxStrength = 0.01
+shader_param/strengthScale = 100.0
+shader_param/interval = 3.5
+shader_param/detail = 1.0
+shader_param/distortion = null
+shader_param/heightOffset = 0.829
+shader_param/offset = 0.0
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 50, 70, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 500.0
+angular_velocity = 47.6
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 428.4
+angle_random = 1.0
+hue_variation = 0.03
+hue_variation_random = 0.58
+
+[sub_resource type="CapsuleShape2D" id=2]
+height = 6.95775
+
+[node name="trees_with_fall_leaves" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ -1528.41 ],
+"_edit_vertical_guides_": [ 421.409 ]
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 4 )
+position = Vector2( 22.8302, -107.967 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 1200, 510, 150, 235 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+modulate = Color( 0.458824, 0.513726, 0.317647, 0.556863 )
+position = Vector2( -10.3181, -113.896 )
+scale = Vector2( 0.01, 0.01 )
+lifetime = 15.0
+randomness = 1.0
+process_material = SubResource( 1 )
+texture = ExtResource( 2 )
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+modulate = Color( 0.458824, 0.513726, 0.317647, 0.556863 )
+position = Vector2( 15.1531, -130.003 )
+scale = Vector2( 0.01, 0.01 )
+lifetime = 15.0
+randomness = 1.0
+process_material = SubResource( 1 )
+texture = ExtResource( 2 )
+
+[node name="Particles2D3" type="Particles2D" parent="."]
+modulate = Color( 0.458824, 0.513726, 0.317647, 0.556863 )
+position = Vector2( 25.6413, -156.598 )
+scale = Vector2( 0.01, 0.01 )
+lifetime = 15.0
+randomness = 1.0
+process_material = SubResource( 1 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1.31611, -0.0102768 )
+shape = SubResource( 2 )

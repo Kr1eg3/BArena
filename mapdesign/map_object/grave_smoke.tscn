@@ -1,0 +1,274 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Tiles/smoke1.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = WORLD_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/speed = 1.0
+shader_param/minStrength = 0.042
+shader_param/maxStrength = 0.01
+shader_param/strengthScale = 100.0
+shader_param/interval = 3.5
+shader_param/detail = 1.0
+shader_param/distortion = null
+shader_param/heightOffset = null
+shader_param/offset = 0.0
+
+[node name="grave_smoke" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 155.714, 146.475 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 363.368, 212.162 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 168.427, 330.822 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( -56.1791, 252.422 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( -73.1305, 432.53 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite6" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( -49.8223, 108.335 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite7" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 376.082, 398.628 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite14" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 519.351, 194.938 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite15" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 702.713, 39.0337 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite16" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 561.872, 590.411 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite17" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 145.666, 575.102 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite18" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 331.133, 590.411 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite19" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 609.818, 446.573 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite8" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 395.881, -39.7788 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite9" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 87.5822, -147.259 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite10" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( -90.5449, -40.4063 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite11" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( -262.157, 477.873 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite20" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 452.182, -175.983 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite21" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 666.615, -258.349 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite22" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 417.432, -337.634 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite23" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 188.783, -268.269 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite24" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 252.985, 29.2044 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite25" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( -84.0731, -278.441 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite26" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 639.665, -70.5193 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite27" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 301.991, -174.884 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite28" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 660.798, -14.9076 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite12" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( -142.429, 665.395 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
+
+[node name="Sprite13" type="Sprite" parent="."]
+modulate = Color( 0.603922, 0.576471, 0.717647, 1 )
+material = SubResource( 2 )
+position = Vector2( 261.876, -157.426 )
+scale = Vector2( 0.812769, 0.671525 )
+texture = ExtResource( 1 )
+offset = Vector2( -163.65, -178.052 )
