@@ -17,6 +17,7 @@ func _on_hit(damage):
 func _on_death():
 	get_node("CollisionPolygon2D").set_deferred("disabled", true)
 	get_node("AnimationPlayer").play("death_w")
+	#get_node("AudioStreamPlayer2D").set_deferred("playing", true)
 	yield(get_tree().create_timer(animation_of_dath), "timeout")
 	queue_free()
 	

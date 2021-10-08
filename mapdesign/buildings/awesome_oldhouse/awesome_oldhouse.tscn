@@ -1,0 +1,145 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://test/roof-removebg-preview.png" type="Texture" id=1]
+[ext_resource path="res://mapdesign/tiles/floor/wood_floor.tres" type="TileSet" id=3]
+[ext_resource path="res://mapdesign/map_object/tableWithChair.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mapdesign/map_object/Wall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mapdesign/map_object/Wall North West.tscn" type="PackedScene" id=6]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+
+
+
+func _on_Area2D_body_entered(body):
+	get_node(\"Sprite2\").set_deferred(\"visible\" , false)
+
+
+func _on_Area2D_body_exited(body):
+	get_node(\"Sprite2\").set_deferred(\"visible\" , true)
+
+"
+
+[node name="awesome_oldhouse" type="Node2D"]
+z_as_relative = false
+
+[node name="wood floor" type="TileMap" parent="."]
+mode = 1
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 256, 128 )
+format = 1
+tile_data = PoolIntArray( -2, 0, 0, -1, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = SubResource( 1 )
+
+[node name="YSort" type="YSort" parent="Area2D"]
+
+[node name="walls" type="YSort" parent="Area2D/YSort"]
+
+[node name="wall NW" parent="Area2D/YSort/walls" instance=ExtResource( 6 )]
+position = Vector2( -109.017, 158.418 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall NW2" parent="Area2D/YSort/walls" instance=ExtResource( 6 )]
+position = Vector2( -44.9194, 126.104 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall NW3" parent="Area2D/YSort/walls" instance=ExtResource( 6 )]
+position = Vector2( 18.6483, 94.85 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall NW4" parent="Area2D/YSort/walls" instance=ExtResource( 6 )]
+position = Vector2( 82.2161, 64.345 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall NW11" parent="Area2D/YSort/walls" instance=ExtResource( 6 )]
+position = Vector2( 78.879, -49.7838 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall NW12" parent="Area2D/YSort/walls" instance=ExtResource( 6 )]
+position = Vector2( 14.8067, -19.0825 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall NW5" parent="Area2D/YSort/walls" instance=ExtResource( 6 )]
+position = Vector2( -483.735, -21.8622 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall NW6" parent="Area2D/YSort/walls" instance=ExtResource( 6 )]
+position = Vector2( -419.638, -54.1759 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall NW7" parent="Area2D/YSort/walls" instance=ExtResource( 6 )]
+position = Vector2( -356.07, -85.43 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall NW8" parent="Area2D/YSort/walls" instance=ExtResource( 6 )]
+position = Vector2( -292.502, -116.684 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall NW9" parent="Area2D/YSort/walls" instance=ExtResource( 6 )]
+position = Vector2( -229.023, -149.263 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall NW10" parent="Area2D/YSort/walls" instance=ExtResource( 6 )]
+position = Vector2( -164.925, -181.577 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall4" parent="Area2D/YSort/walls" instance=ExtResource( 5 )]
+position = Vector2( -301.495, 101.487 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall5" parent="Area2D/YSort/walls" instance=ExtResource( 5 )]
+position = Vector2( -237.397, 133.271 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall6" parent="Area2D/YSort/walls" instance=ExtResource( 5 )]
+position = Vector2( -173.107, 164.226 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="table" parent="Area2D/YSort/walls" instance=ExtResource( 4 )]
+position = Vector2( -130.178, 21.1117 )
+
+[node name="wall" parent="Area2D/YSort/walls" instance=ExtResource( 5 )]
+position = Vector2( -494.364, 7.03711 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall7" parent="Area2D/YSort/walls" instance=ExtResource( 5 )]
+position = Vector2( -100.37, -175.611 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall8" parent="Area2D/YSort/walls" instance=ExtResource( 5 )]
+position = Vector2( -36.0798, -144.657 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall9" parent="Area2D/YSort/walls" instance=ExtResource( 5 )]
+position = Vector2( 28.3239, -112.678 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall10" parent="Area2D/YSort/walls" instance=ExtResource( 5 )]
+position = Vector2( 92.6137, -81.7241 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall12" parent="Area2D/YSort/walls" instance=ExtResource( 5 )]
+position = Vector2( 70.1192, 31.7237 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="wall11" parent="Area2D/YSort/walls" instance=ExtResource( 5 )]
+position = Vector2( 28.5413, 11.7147 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2( 0, -11.9865 )
+polygon = PoolVector2Array( -504, 19.9865, -128, 203.986, 136, 75.9865, 8, 11.9865, 152, -52.0135, -112, -172.014 )
+
+[node name="Sprite2" type="Sprite" parent="Area2D"]
+visible = false
+position = Vector2( -188, -80 )
+scale = Vector2( 1.55224, 1.52672 )
+texture = ExtResource( 1 )
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_Area2D_body_exited"]
