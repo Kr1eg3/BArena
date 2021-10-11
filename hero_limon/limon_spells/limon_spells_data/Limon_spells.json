@@ -1,0 +1,10 @@
+{
+  "RoundExplosion": {
+    "skill_name": "RoundExplosion",
+    "skill_type": "RangedAOE",
+    "skill_damage": 250,
+    "skill_projectile_speed": "N/A",
+    "skill_radius": 50,
+    "skill_cd": 3
+  }
+}

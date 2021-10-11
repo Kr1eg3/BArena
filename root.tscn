@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://hero_limon/limon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://arena.jpg" type="Texture" id=2]
+
+[node name="root" type="Node"]
+
+[node name="icon" type="Sprite" parent="."]
+position = Vector2( 11.991, -131.548 )
+scale = Vector2( 4.35859, 3.09441 )
+texture = ExtResource( 2 )
+
+[node name="Player2" parent="." instance=ExtResource( 1 )]
